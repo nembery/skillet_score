@@ -1,0 +1,35 @@
+name: skillet_score_D3448829-CB0C-4B4B-8A66-6262C2FAE2B9
+# label used for menu selection
+label: Skillet Score Keeper
+
+description: |
+  Crunches the numbers on all the Skillets found in a directory
+ 
+type: python3
+
+# Labels allow grouping and type specific options and are generally only used in advanced cases
+labels:
+  collection:
+    - Score Keeper
+
+# variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
+# may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
+variables:
+  - name: skillet_directory
+    description: Directory to Search
+    default: "~/.pan_cnc/panhandler/repositories/"
+    type_hint: text
+  - name: skillet_output
+    description: Output Format
+    default: table
+    type_hint: dropdown
+    dd_list:
+      - key: CSV
+        value: csv
+      - key: Table
+        value: table
+
+snippets:
+  - name: script
+    file: score_keeper.py
+    input_type: env
