@@ -14,9 +14,9 @@ else:
 skillets = sl.load_all_skillets_from_dir(d)
 
 if output_format == 'table':
-    print('_' * 132)
+    print('_' * 138)
     print(f'|{"Skillet":^90}|{"Type":^15}|{"Vars":^4}|{"Snippets":^8}|{"Lines of Config":^15}|')
-    print('_' * 132)
+    print('_' * 138)
 else:
     print('Skillet,Type,Variables,Snippets,Lines of Config')
 
@@ -35,4 +35,4 @@ for s in skillets:
         print(f'{s.name},{s.type},{num_vars},{num_snippets},{num_xml_lines}')
 
 if output_format == 'table':
-    print('-' * 132)
+    print('-' * 138)
