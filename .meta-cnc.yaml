@@ -31,5 +31,5 @@ variables:
 
 snippets:
   - name: script
-    file: score_keeper.py
+    file: score_all_skillets.py
     input_type: env
