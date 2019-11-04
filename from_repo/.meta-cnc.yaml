@@ -1,0 +1,39 @@
+name: skillet_score_by_repoE549CA02-11CD-46B8-9809-EA3737E64DF4
+# label used for menu selection
+label: Score Skillets from Repository
+
+description: |
+  Crunches the numbers on all the Skillets found in a Git repository
+ 
+type: python3
+
+# Labels allow grouping and type specific options and are generally only used in advanced cases
+labels:
+  collection:
+    - Score Keeper
+
+# variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
+# may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
+variables:
+  - name: repo_url
+    description: Git Repository to Search (HTTPS)
+    default: "https://github.com/nembery/Skillets.git"
+    type_hint: url
+  - name: repo_branch
+    description: Branch to Clone
+    default: master
+    type_hint: text
+  - name: skillet_output
+    description: Output Format
+    default: table
+    type_hint: dropdown
+    dd_list:
+      - key: CSV
+        value: csv
+      - key: Table
+        value: table
+
+snippets:
+  - name: script
+    file: ../score_git_skillets.py
+    input_type: env
