@@ -29,6 +29,10 @@ for s in skillets:
             if 'element' in snippet.metadata:
                 num_xml_lines += len(snippet.metadata['element'].split('\n'))
 
+    elif 'template' in s.type:
+        for snippet in s.get_snippets():
+            num_xml_lines += len(snippet.template_str.split('\n'))
+
     if output_format == 'table':
         print(f'|{s.label:90}|{s.type:15}|{num_vars:4}|{num_snippets:8}|{num_xml_lines:15}|')
     else:
