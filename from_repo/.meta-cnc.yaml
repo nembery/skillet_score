@@ -23,7 +23,7 @@ variables:
     description: Branch to Clone
     default: master
     type_hint: text
-  - name: skillet_output
+  - name: skillet_format
     description: Output Format
     default: table
     type_hint: dropdown

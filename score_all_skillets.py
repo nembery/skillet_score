@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from skilletlib.skilletLoader import SkilletLoader
 
@@ -33,6 +34,20 @@ for s in skillets:
         for snippet in s.get_snippets():
             num_xml_lines += len(snippet.template_str.split('\n'))
 
+    elif 'python3' in s.type:
+        for snippet in s.get_snippets():
+            if 'file' in snippet.metadata:
+                p_path = Path(s.path).joinpath(snippet.metadata['file'])
+                if p_path.exists():
+                    with p_path.open() as python_file:
+                        num_xml_lines += len(python_file.readlines())
+
+    elif s.type == 'terraform':
+        for f in Path(s.path).rglob('*.tf'):
+            if f.exists():
+                with f.open() as terraform_file:
+                    num_xml_lines += len(terraform_file.readlines())
+
     if output_format == 'table':
         print(f'|{s.label:90}|{s.type:15}|{num_vars:4}|{num_snippets:8}|{num_xml_lines:15}|')
     else:
@@ -40,4 +55,3 @@ for s in skillets:
 
 if output_format == 'table':
     print('-' * 138)
-
