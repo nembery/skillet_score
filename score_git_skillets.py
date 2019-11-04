@@ -21,9 +21,9 @@ else:
 skillets = sl.load_from_git(repo_url, repo_name, repo_branch, local_dir=directory)
 
 if output_format == 'table':
-    print('_' * 139)
+    print('_' * 138)
     print(f'|{"Skillet":^90}|{"Type":^15}|{"Vars":^4}|{"Snippets":^8}|{"Lines of Config":^15}|')
-    print('_' * 139)
+    print('_' * 138)
 else:
     print('Skillet,Type,Variables,Snippets,Lines of Config')
 
@@ -42,4 +42,5 @@ for s in skillets:
         print(f'{s.name},{s.type},{num_vars},{num_snippets},{num_xml_lines}')
 
 if output_format == 'table':
-    print('-' * 139)
+    print('-' * 138)
+

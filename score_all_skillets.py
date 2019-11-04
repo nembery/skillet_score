@@ -36,3 +36,4 @@ for s in skillets:
 
 if output_format == 'table':
     print('-' * 138)
+
